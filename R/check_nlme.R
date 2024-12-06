@@ -9,8 +9,9 @@
 #' @param ranef Whether to extract the random effects (default is TRUE)
 #'
 #' @return A list with the results of the checks
-#' #' @examples
+#' @export
 #'
+#' @examples
 #' # Load the Orthodont data
 #' data("Orthodont", package = "nlme")
 #' as.data.frame(Orthodont)

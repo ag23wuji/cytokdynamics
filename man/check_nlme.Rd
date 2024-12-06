@@ -31,8 +31,11 @@ check_nlme(
 }
 \value{
 A list with the results of the checks
-#' @examples
-
+}
+\description{
+Checks a non-linear mixed-effects model (nlme) for various assumptions
+}
+\examples{
 # Load the Orthodont data
 data("Orthodont", package = "nlme")
 as.data.frame(Orthodont)
@@ -40,7 +43,4 @@ as.data.frame(Orthodont)
 model <- nlme::lme(distance ~ sin(age), data = Orthodont, random = ~ 1 | Subject)
 # Check the model
 check_nlme(model)
-}
-\description{
-Checks a non-linear mixed-effects model (nlme) for various assumptions
 }
