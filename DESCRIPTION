@@ -5,6 +5,6 @@ Version: 0.1.0
 Author: Godber Sönke Andrés Godbersen & Dr. Wolfram Brenner
 Maintainer: The package maintainer <godbersengodber@gmail.com>
 Description: This package will be able to analyse gene expression data in plants, concentrating on Cytokinin dependent negative feedback behavior.
-License: What license is it under?
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
