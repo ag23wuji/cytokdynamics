@@ -11,7 +11,7 @@ make_useable(
   clean_names = TRUE,
   to_fct = FALSE,
   check_struct = FALSE,
-  csv_args = list(),
+  file_args = list(),
   tibble_args = list(),
   clean_args = list()
 )
@@ -19,7 +19,7 @@ make_useable(
 \arguments{
 \item{data}{A dataframe}
 
-\item{path}{A path to a csv file}
+\item{path}{A path to a csv or xlsx file}
 
 \item{type}{The type of object to return. Either 'tibble' or 'dataframe'}
 
@@ -29,7 +29,7 @@ make_useable(
 
 \item{check_struct}{Whether to check the structure of the data using dplyr::glimpse (logical)}
 
-\item{csv_args}{A list of arguments to pass to read.csv}
+\item{file_args}{A list of arguments to pass to either read.csv or openxlsx::read.xlsx}
 
 \item{tibble_args}{A list of arguments to pass to tibble::as_tibble}
 
@@ -39,10 +39,10 @@ make_useable(
 A dataframe or tibble
 }
 \description{
-You have big datasets and want to make them directly more usable? This function helps you with this issue. It will read in your data from a path or take a given data, turns it into nice format, and if you want so, gives you back how it is structured!
+You have big datasets and want to make them directly more usable? This function helps you with this issue. It will read in your data from a path (either as .xlsx or .csv) or take a given data, turn it into a nice format, and, if you want, give you back how it is structured!
 }
 \examples{
-make_useable(data = mtcars, type = "dataframe", to_fct = TRUE, check_struct = TRUE)
-make_useable(data = iris, type = "tibble", clean_names = FALSE)
+# make_useable(path = "example.csv", type = "dataframe", clean_names = TRUE, file_args = list(sep = ","))
+# make_useable(path = "example.xlsx", type = "tibble", clean_names = TRUE, file_args = list(sheet = 1))
 make_useable(data = iris, type = "tibble", clean_names = TRUE)
 }
