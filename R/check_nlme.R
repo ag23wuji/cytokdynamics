@@ -9,6 +9,15 @@
 #' @param ranef Whether to extract the random effects (default is TRUE)
 #'
 #' @return A list with the results of the checks
+#' #' @examples
+#'
+#' # Load the Orthodont data
+#' data("Orthodont", package = "nlme")
+#' as.data.frame(Orthodont)
+#' # Fit a non-linear mixed-effects model
+#' model <- nlme::lme(distance ~ sin(age), data = Orthodont, random = ~ 1 | Subject)
+#' # Check the model
+#' check_nlme(model)
 check_nlme <- function(model = NULL, autocorrelation = TRUE, collinearity = TRUE,
                        heteroscedasticity = TRUE, normality = TRUE,
                        varCorr = TRUE, ranef = TRUE) {
