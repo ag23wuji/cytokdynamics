@@ -44,5 +44,7 @@ You have big datasets and want to make them directly more usable? This function 
 \examples{
 # make_useable(path = "example.csv", type = "dataframe", clean_names = TRUE, file_args = list(sep = ","))
 # make_useable(path = "example.xlsx", type = "tibble", clean_names = TRUE, file_args = list(sheet = 1))
+make_useable(data = mtcars, type = "dataframe", to_fct = TRUE, check_struct = TRUE)
+make_useable(data = iris, type = "tibble", clean_names = FALSE)
 make_useable(data = iris, type = "tibble", clean_names = TRUE)
 }
