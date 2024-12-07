@@ -14,5 +14,6 @@
 #   Test Package:              'Cmd + Shift + T'
 
 hello <- function() {
+  .Defunct("hello")
   print("Hello, world!")
 }
