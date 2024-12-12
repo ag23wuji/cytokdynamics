@@ -28,15 +28,21 @@ for demonstrating data analysis, visualization, and modeling techniques.
 }
 \examples{
 # Load the dataset
-data(sample_dataset)
+data(eu_stock_df)
 
 # View the first few rows
-head(sample_dataset)
+head(eu_stock_df)
 
-# Plot stock prices over time
-library(ggplot2)
-ggplot(sample_dataset, aes(x = year, y = price, color = stock)) +
-  geom_line() +
-  labs(title = "European Stock Market Prices", x = "Year", y = "Price")
+# Example 1: Plotting stock prices over time, grouped by stock
+meansd_ot(
+  eu_stock_df,
+  x_axis = "year",
+  y_axis = "price",
+  color = "stock",
+  ggplot_objects = list(
+    ggplot2::geom_line(),
+    ggplot2::labs(title = "Stock Prices Over Time", x = "Year", y = "Price")
+  )
+)
 }
 \keyword{datasets}

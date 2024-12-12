@@ -1,4 +1,5 @@
 exportPattern("^[[:alpha:]]+")
 importFrom("stats", "shapiro.test")
+importFrom("stats", "sd")
 import("performance")
 import("nlme")
