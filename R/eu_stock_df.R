@@ -14,6 +14,8 @@
 #' The data includes annual stock prices for each of the listed stock market indices. It can be used
 #' for demonstrating data analysis, visualization, and modeling techniques.
 #'
+#' @docType data
+#' @keywords datasets
 #' @source Built from the \code{\link{EuStockMarkets}} dataset in base R.
 #'
 #' @examples
