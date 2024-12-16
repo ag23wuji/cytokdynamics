@@ -1,0 +1,23 @@
+#' Cytokinin Expression Dataset
+#'
+#' A dataset containing cytokinin-related expression data for various treatments, time points, and targets. This dataset is commonly used for analyzing gene expression dynamics under different conditions. Difference to cytokinin_expression is the inclusion of "removed as treatment argument. Check summary(cytokinin_expression) and summary(cytokinin_expression2) for more details!
+#' @docType data
+#'
+#' @format A tibble with 210 rows and 8 variables:
+#' \describe{
+#'   \item{ba_concentration}{\code{chr}: The concentration of benzylaminopurine (BA), a cytokinin, in the treatment. Example: "500".}
+#'   \item{treatment}{\code{chr}: The type of treatment applied (e.g., "direct").}
+#'   \item{time}{\code{int}: The time (in minutes) since the treatment was applied.}
+#'   \item{target}{\code{chr}: The gene target for expression analysis (e.g., "ARR5", "ARR6").}
+#'   \item{relative_quantity_ratio}{\code{num}: The relative quantity of the target gene's expression, normalized to a reference.}
+#'   \item{unscaled_expression_ratio}{\code{num}: The unscaled expression ratio of the target gene.}
+#'   \item{expression_ratio}{\code{num}: The scaled expression ratio of the target gene.}
+#'   \item{group}{\code{chr}: A concatenated identifier combining \code{ba_concentration}, \code{treatment}, and \code{target} (e.g., "500_direct_ARR5").}
+#' }
+#'
+#' @details
+#' This dataset provides insights into how different concentrations of cytokinin and treatments affect gene expression over time. It includes multiple replicates for statistical analysis.
+#'
+#' @source Generated for cytokinin gene expression analysis. Experiments conducted by Dr. Wolfram Brenner. Transformed by the author. Copyright by Dr. Wolfram Brenner and Godber Andrés Godbersen.
+#' @export
+"cytokinin_expression2"
