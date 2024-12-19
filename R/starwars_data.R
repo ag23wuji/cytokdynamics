@@ -38,4 +38,5 @@
 #'
 #' # Summary of starwars data
 #' dplyr::glimpse(starwars_data)
+#' @export
 "starwars_data"

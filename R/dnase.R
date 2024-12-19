@@ -32,4 +32,5 @@
 #'        x = "Concentration",
 #'        y = "Density",
 #'        color = "Run")
+#'@export
 "dnase"

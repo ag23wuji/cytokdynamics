@@ -36,4 +36,5 @@
 #'     ggplot2::labs(title = "Stock Prices Over Time", x = "Year", y = "Price")
 #'   )
 #' )
+#' @export
 "eu_stock_df"
