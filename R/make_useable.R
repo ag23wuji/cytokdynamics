@@ -21,8 +21,7 @@
 #' @export
 #' @importFrom janitor clean_names
 #' @importFrom tibble as_tibble
-#' @importFrom dplyr mutate_if
-#' @importFrom dplyr glimpse
+#' @importFrom dplyr mutate across where glimpse
 #' @importFrom utils read.csv
 #' @importFrom openxlsx read.xlsx
 #' @importFrom stringr str_detect
@@ -37,60 +36,48 @@ make_useable <- function(
     tibble_args = list(),
     clean_args = list()
 ) {
-  # Check if data is a dataframe
-  if (!is.null(data) & !is.data.frame(data)) {
-    stop("data must be a dataframe")
+  # Ensure type is valid
+  type <- match.arg(type)
+
+  # Validate input
+  if (!is.null(data) && !is.null(path)) {
+    stop("Provide either 'data' or 'path', not both")
+  }
+  if (is.null(data) && is.null(path)) {
+    stop("You must provide either 'data' or a valid 'path'")
   }
 
-  # Read data from file if path is provided
-  if (!is.null(path) & is.null(data)) {
+  # Read data if path is provided
+  if (!is.null(path)) {
     if (!file.exists(path)) {
       stop("File does not exist")
-    } else if (stringr::str_detect(path, "\\.csv$")) {
-      # Use file_args for read.csv
+    } else if (stringr::str_detect(tolower(path), "\\.csv$")) {
       data <- do.call(utils::read.csv, c(list(file = path), file_args))
-    } else if (stringr::str_detect(path, "\\.xlsx$")) {
-      # Use file_args for read.xlsx
+    } else if (stringr::str_detect(tolower(path), "\\.xlsx$")) {
       data <- do.call(openxlsx::read.xlsx, c(list(xlsxFile = path), file_args))
     } else {
       stop("Unsupported file type. Only .csv and .xlsx are supported.")
     }
   }
 
-  # Ensure at least one of data or path is provided
-  else if (is.null(data) & is.null(path)) {
-    stop("You must provide either a dataframe or a path to a csv or xlsx file")
+  # Ensure data is a dataframe
+  if (!is.data.frame(data)) {
+    stop("The input 'data' must be a valid dataframe")
   }
 
-  # Prevent both data and path from being provided
-  else if (!is.null(data) & !is.null(path)) {
-    stop("You must provide either a dataframe or a path to a csv or xlsx file, not both")
-  }
-
-  # If data is already provided
-  else if (!is.null(data) & is.null(path)) {
-    data <- data
-  }
-
-  # Check if the specified type is valid
-  if (!type %in% c("tibble", "dataframe")) {
-    stop("type must be either 'tibble' or 'dataframe'")
-  }
-
-  # Convert to tibble if requested, using tibble_args
+  # Convert to tibble if requested
   if (type == "tibble") {
     data <- do.call(tibble::as_tibble, c(list(data), tibble_args))
   }
 
-  # Clean column names if requested, using clean_args
+  # Clean column names if requested
   if (clean_names) {
-    data <- do.call(janitor::clean_names, c(list(dat = data), clean_args)) # Use 'dat'
+    data <- do.call(janitor::clean_names, c(list(dat = data), clean_args))
   }
 
   # Convert character columns to factors if requested
   if (to_fct) {
-    data <- data |>
-      dplyr::mutate_if(is.character, factor)
+    data <- data |> dplyr::mutate(dplyr::across(dplyr::where(is.character), as.factor))
   }
 
   # Check the structure of the data if requested
@@ -100,3 +87,5 @@ make_useable <- function(
 
   return(data)
 }
+
+# Helper functions could be added if further modularization is required in the future.

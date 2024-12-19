@@ -8,6 +8,7 @@
 #' @param dummys A logical value indicating whether to create dummy variables.
 #' @param pca_call A logical value indicating whether to perform PCA.
 #' @return A PCA object if pca_call is TRUE, otherwise a data frame.
+#' @export pca_prep
 #' @examples
 #' pca_prep(iris)
 #' pca_prep(iris, dummy_specify = c("Species"))
