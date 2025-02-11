@@ -15,7 +15,7 @@
 #' # use the package intern datasets cytokinin expression:
 #' data(cytokinin_expression)
 #' is_negative_feedback(cytokinin_expression)
-#' is_negative_feedback(data = cytokinin_expression, filter_args = list('group == "500_direct_ARR5"'))
+#' is_negative_feedback(cytokinin_expression, filter_args = list('group == "500_direct_ARR5"'))
 is_negative_feedback <- function(
     data,
     relative_quantity = "relative_quantity_ratio",
@@ -92,8 +92,8 @@ is_negative_feedback <- function(
 
       message(
         "Your gene expression probably follows a negative feedback curve. ",
-        "The peak occurs at relative quantity = ", params["A", "Estimate"],
-        ", the trough at relative quantity = ", params["omega", "Estimate"],
+        "The peak occurs at relative quantity = ", round(params["A", "Estimate"], 4),
+        ", the trough at relative quantity = ", round(params["omega", "Estimate"], 4),
         ", and the phase is reached at relative quantity = ", params["phase", "Estimate"], "."
       )
     }

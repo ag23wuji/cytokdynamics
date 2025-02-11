@@ -37,5 +37,5 @@ Take in mind: if the output is an error, this most likely indicates that we dont
 # use the package intern datasets cytokinin expression:
 data(cytokinin_expression)
 is_negative_feedback(cytokinin_expression)
-is_negative_feedback(data = cytokinin_expression, filter_args = list('group == "500_direct_ARR5"'))
+is_negative_feedback(cytokinin_expression, filter_args = list('group == "500_direct_ARR5"'))
 }
